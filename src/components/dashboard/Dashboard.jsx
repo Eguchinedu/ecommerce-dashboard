@@ -217,9 +217,11 @@ export default function Dashboard() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography>
+        {/* <Typography> */}
+          <div>
           <Outlet />
-        </Typography>
+          </div>
+        {/* </Typography> */}
       </Box>
     </Box>
   );
