@@ -7,7 +7,7 @@ const LoginForm = () => {
     const handleSubmit = (e) => {
       e.preventDefault();
       toast.success("Welcome Admin.😁");
-      navigate("/");
+      navigate("/dashboard");
     };
   return (
     <div className="auth__form">
