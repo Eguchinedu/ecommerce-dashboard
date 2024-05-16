@@ -16,15 +16,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import GroupIcon from "@mui/icons-material/Group";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Button } from "@mui/material";
 import { toast } from "react-toastify";
 
 const drawerWidth = 240;
@@ -108,7 +105,7 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
   const menuItems = [
-    { text: "Main", icon: <DashboardIcon />, link: "main" },
+    { text: "Dashboard", icon: <DashboardIcon />, link: "main" },
     { text: "Users", icon: <GroupIcon />, link: "users" },
     { text: "Products", icon: <LocalMallIcon />, link: "orders" },
     { text: "Orders", icon: <DescriptionIcon />, link: "products" },
@@ -118,6 +115,13 @@ export default function Dashboard() {
     toast.success("logged out, Bye!👋");
     navigate("/");
   };
+  const location = useLocation();
+  // Split the pathname and get the last part
+  const pathParts = location.pathname.split("/");
+  const lastPathPart = pathParts[pathParts.length - 1] || "Dashboard"; // Default to "Dashboard" if the last part is empty
+  // Capitalize the first letter of the last path part
+  const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+  const title = capitalize(lastPathPart.replace("-", " "));
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -137,14 +141,14 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Ecommerce Dashboard
+           {title === "Main" ? "Dashboard" : title}
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <Typography variant="h6" sx={{flex: "1", textAlign: "center"}}>
-           User
+          <Typography variant="h6" sx={{ flex: "1", textAlign: "center" }}>
+            Logo 🛒
           </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -218,9 +222,9 @@ export default function Dashboard() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         {/* <Typography> */}
-          <div>
+        <div>
           <Outlet />
-          </div>
+        </div>
         {/* </Typography> */}
       </Box>
     </Box>
