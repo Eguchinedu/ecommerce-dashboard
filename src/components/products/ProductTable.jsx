@@ -202,7 +202,7 @@ export default function ProductTable() {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [open, setOpen] = React.useState(false);
   const [newProduct, setNewProduct] = React.useState({
     image: "",
@@ -378,7 +378,7 @@ export default function ProductTable() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[10, 15, 25, 40]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
@@ -387,10 +387,6 @@ export default function ProductTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
 
       <Modal open={open} onClose={handleClose}>
         <Box
