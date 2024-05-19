@@ -1,0 +1,92 @@
+.table__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.action__buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 3;
+    button {
+        display: flex;
+        align-items: center;
+        padding: 5px 25px;
+        font-weight: 700;
+        border-radius: 3px;
+        background-color: transparent;
+        &.add {
+            color: #45d6a3;
+            border: 1px solid #45d6a3;
+            transition: .3s ease-in-out;
+            &:hover{
+                background-color: #d0f5e8;
+            }
+
+        }
+        &.delete {
+            color: #ff6262;
+            border: 1px solid #ff6262;
+            transition: .3s ease-in-out;
+            &:hover{
+                background-color: #ffcbcb;
+            }
+        }
+    }
+}
+
+ .action__btn {
+     display: flex;
+     align-items: center;
+     
+     padding: 15px 25px;
+     font-weight: 700;
+     border-radius: 3px;
+     background-color: transparent;
+
+     &.add {
+         color: #45d6a3;
+         border: 1px solid #45d6a3;
+         transition: .3s ease-in-out;
+
+         &:hover {
+             background-color: #d0f5e8;
+         }
+
+     }
+    }
+
+.filter__action {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    .filter__field {
+        select{
+            padding: 10px 10px;
+            border-radius: 3px;
+            border: 1px solid var(--border-color);
+            &::after{
+                position: absolute;
+                    content: "";
+                    top: 14px;
+                    right: 10px;
+                    width: 0;
+                    height: 0;
+                    border: 6px solid transparent;
+                    border-color: #fff transparent transparent transparent;
+            }
+            option {
+            margin: 20px 0;
+            border-radius: 0;
+            }
+        }
+    }
+    .search__action {
+        input {
+            padding: 10px 10px;
+            border-radius: 3px;
+            border: 1px solid var(--border-color);
+        }
+    }
+}

@@ -12,14 +12,26 @@ const getAllItems = () => {
 };
 
 export const ProductContextProvider = (props) => {
-  const [products, setProducts] = useState([getAllItems()]);
+  const [products, setProducts] = useState(getAllItems());
+
   const addNewProduct = (newProduct) => {
     setProducts([...products, { id: products.length + 1, ...newProduct }]);
   };
+
+  const deleteProduct = (id) => {
+    setProducts(products.filter((product) => product.id !== id));
+  };
+
+  const deleteSelectedProducts = (ids) => {
+    setProducts(products.filter((product) => !ids.includes(product.id)));
+  };
+
   const contextValue = {
     getItemById,
     getAllItems,
     addNewProduct,
+    deleteProduct,
+    deleteSelectedProducts,
   };
 
   return (
